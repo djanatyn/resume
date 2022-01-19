@@ -33,11 +33,11 @@
             buildPhase = ''
               export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
 
-              (cd $src && runhaskell Main.hs) >> resume.txt
+              cd $src && runhaskell Main.hs
             '';
 
             installPhase = ''
-              mkdir -p $out && install -Dm755 resume.txt $out/resume.txt
+              mkdir -p $out && install -Dm755 resume.pdf $out/resume.pdf
             '';
 
           };
