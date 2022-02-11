@@ -90,9 +90,6 @@ main = do
             BH.h3 $ text "(this resume built with...)"
             BH.ul $ mapM_ (BH.li . BH.toHtml) versions
 
-  -- -- render css
-  -- TI.writeFile "style.css" $ C.render style
-
   -- convert html to pdf
   (stdout, stderr) <- readProcess_ "wkhtmltopdf --user-style-sheet style.css resume.html resume.pdf"
   putStrLn (BL.unpack stderr)
