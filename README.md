@@ -2,7 +2,7 @@
 
 Build process for my work resume.
 
-* Work experience recorded using [Dhall configurtion language](https://dhall-lang.org/) (`src/experience.dhall`)
+* Work experience recorded using [Dhall configuration language](https://dhall-lang.org/) (`src/experience.dhall`)
 ```dhall
 let Resume
     : Type
