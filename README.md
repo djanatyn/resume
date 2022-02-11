@@ -32,6 +32,9 @@ installPhase = ''
   mkdir -p $out && install -Dm755 resume.pdf $out/resume.pdf
 '';
 ```
+# motivations
+
+* avoid using LaTeX
 
 # usage
 
