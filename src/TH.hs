@@ -21,7 +21,6 @@ versions =
         ghcVersion <- run "ghc --print-project-version"
         dhall <- run "ghc-pkg list --simple-output dhall"
         blaze <- run "ghc-pkg list --simple-output blaze-html"
-        clay <- run "ghc-pkg list --simple-output clay"
 
         [|
           map
@@ -29,7 +28,6 @@ versions =
             [ ["ghc", ghcVersion, "(", ghcCommit, ")"],
               ["nixos/nixpkgs", nixpkgsVersion],
               [dhall],
-              [blaze],
-              [clay]
+              [blaze]
             ]
           |]

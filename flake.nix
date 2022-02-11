@@ -21,7 +21,6 @@
               (packages.ghc902.ghcWithPackages (haskellPackages:
                 with haskellPackages; [
                   blaze-html
-                  clay
                   typed-process
                   bytestring
                   text
