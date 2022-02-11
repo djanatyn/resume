@@ -10,7 +10,7 @@ let Resume
       , skills : Skills
       , history : List Job }
 ```
-* `src/Main.hs` renders configurtion into HTML document using [blaze-html](https://hackage.haskell.org/package/blaze-html) 
+* `src/Main.hs` renders configuration into HTML document using [blaze-html](https://hackage.haskell.org/package/blaze-html) 
 ```haskell
 renderJob :: Job -> BH.Html
 renderJob Job {organization, position, duration, experiences} = BH.li $ do
