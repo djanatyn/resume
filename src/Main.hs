@@ -1,36 +1,91 @@
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
 
 module Main where
 
+import Control.Monad (mapM_)
 import qualified Data.ByteString.Lazy.Char8 as BL
-import qualified Data.Text.IO as TI
+import Data.Text (Text)
+import Dhall (FromDhall, Generic, auto, inputFile)
 import System.IO (writeFile)
 import System.Process.Typed (readProcess_)
 import qualified TH
-import Text.Pandoc (def, runIOorExplode, writeHtml5String)
-import Text.Pandoc.Builder
+import Text.Blaze.Html.Renderer.Pretty (renderHtml)
+import qualified Text.Blaze.Html5 as BH
 
-versions :: [(String, String)]
+data Job where
+  Job ::
+    { organization :: Text,
+      position :: Text,
+      duration :: Text,
+      experiences :: [Text]
+    } ->
+    Job
+  deriving (Show, Generic, FromDhall)
+
+data Skills where
+  Skills ::
+    { languages :: [Text],
+      software :: [Text]
+    } ->
+    Skills
+  deriving (Show, Generic, FromDhall)
+
+data ContactInfo where
+  ContactInfo ::
+    { name :: Text,
+      email :: Text
+    } ->
+    ContactInfo
+  deriving (Show, Generic, FromDhall)
+
+data Resume where
+  Resume ::
+    { contact :: ContactInfo,
+      skills :: Skills,
+      history :: [Job]
+    } ->
+    Resume
+  deriving (Show, Generic, FromDhall)
+
+loadResume :: IO Resume
+loadResume = inputFile (auto @Resume) "./experience.dhall"
+
+renderJob :: Job -> BH.Html
+renderJob Job {organization, position, duration, experiences} = BH.li $ do
+  BH.h2 $ BH.toHtml organization
+  BH.h3 $ BH.toHtml position
+  BH.h4 $ BH.toHtml duration
+  BH.ul $ mapM_ (BH.li . BH.toHtml) experiences
+
+versions :: [String]
 versions = $(TH.versions)
-
-myDoc :: Pandoc
-myDoc =
-  setTitle "Resume" $
-    doc $
-      para "paragraph 1"
-        <> para "paragraph 2"
-        <> bulletList
-          [ para "item 1",
-            para "item 2" <> para "item 2 line 2",
-            plain (link "/url" "go to url" "link")
-          ]
 
 main :: IO ()
 main = do
-  html <- runIOorExplode $ writeHtml5String def myDoc
-  TI.writeFile "resume.html" html
+  -- load resume
+  Resume {contact, skills, history} <- loadResume
 
+  -- render html
+  writeFile "resume.html" $
+    renderHtml $
+      let text = BH.toHtml @String
+       in do
+            BH.h1 $ text "Skills"
+            BH.h2 $ text "Languages"
+            BH.ul $ mapM_ (BH.li . BH.toHtml) $ languages skills
+            BH.h2 $ text "Software + SaaS"
+            BH.ul $ mapM_ (BH.li . BH.toHtml) $ software skills
+            BH.h1 $ text "Work Experience"
+            BH.ul $ mapM_ renderJob history
+            BH.h3 $ text "built with..."
+            BH.ul $ mapM_ (BH.li . BH.toHtml) versions
+
+  -- convert html to pdf
   (stdout, stderr) <- readProcess_ "wkhtmltopdf resume.html resume.pdf"
-
   putStrLn (BL.unpack stderr)
