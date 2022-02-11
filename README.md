@@ -16,7 +16,7 @@ renderJob :: Job -> BH.Html
 renderJob Job {organization, position, duration, experiences} = BH.li $ do
   ...
 ```
-* [wkhtmltopdf](https://wkhtmltopdf.org/) renders html into PDF
+* [wkhtmltopdf](https://wkhtmltopdf.org/) renders HTML into PDF
 ```
 $ nix develop github:djanatyn/resume#resume -c wkhtmltopdf --version
 wkhtmltopdf 0.12.6
