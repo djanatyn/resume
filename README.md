@@ -22,7 +22,7 @@ $ nix develop github:djanatyn/resume#resume -c wkhtmltopdf --version
 wkhtmltopdf 0.12.6
 ```
 * All dependencies + build automation managed using [Nix Flakes](https://nixos.wiki/wiki/Flakes)
-```nix
+```
 buildPhase = ''
   export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
   runhaskell $src/Main.hs
@@ -38,4 +38,3 @@ installPhase = ''
 ``` sh
 nix build github:djanatyn/resume
 ```
- `
