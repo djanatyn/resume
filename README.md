@@ -17,10 +17,25 @@ renderJob Job {organization, position, duration, experiences} = BH.li $ do
   ...
 ```
 * [wkhtmltopdf](https://wkhtmltopdf.org/) renders html into PDF
+```
+$ nix develop github:djanatyn/resume#resume -c wkhtmltopdf --version
+wkhtmltopdf 0.12.6
+```
 * All dependencies + build automation managed using [Nix Flakes](https://nixos.wiki/wiki/Flakes)
+```nix
+buildPhase = ''
+  export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
+  runhaskell $src/Main.hs
+'';
+
+installPhase = ''
+  mkdir -p $out && install -Dm755 resume.pdf $out/resume.pdf
+'';
+```
 
 # usage
 
 ``` sh
 nix build github:djanatyn/resume
 ```
+ `
