@@ -9,6 +9,19 @@
       forAllSystems = f:
         nixpkgs.lib.genAttrs supportedSystems (system: f system);
     in {
+      # dev shell just provides ghc 9.2
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system; };
+        in {
+          resume = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              haskell.compiler.ghc902
+              zlib.dev
+            ];
+          };
+        });
+
+      # the package definition pulls in haskell deps through nixpkgs
       packages = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system; };
         in {

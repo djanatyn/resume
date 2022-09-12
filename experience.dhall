@@ -43,7 +43,17 @@ let skills
 
 let history
     : List Job
-    =   [ { organization = "American Eagle Outfitters"
+    =   [ { organization = "Metafy"
+          , position = "Systems Engineer"
+          , duration = "December 2016 - January 2022"
+          , experiences = [] : List Text
+          }
+        , { organization = "Recurse Center"
+          , position = "Participant"
+          , duration = "December 2016 - January 2022"
+          , experiences = [] : List Text
+          }
+        , { organization = "American Eagle Outfitters"
           , position = "Systems Engineer"
           , duration = "December 2016 - January 2022"
           , experiences =
