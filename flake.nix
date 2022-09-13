@@ -44,9 +44,11 @@
 
             buildPhase = ''
               export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
+
               # move config into src for runhaskell
-              cd src && cp -v ../style.css ../experience.dhall .
-              runhaskell $src/src/Main.hs
+              cp -v style.css experience.dhall src/
+
+              cd src && runhaskell Main.hs
             '';
 
             installPhase = ''
