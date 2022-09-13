@@ -9,13 +9,26 @@
       forAllSystems = f:
         nixpkgs.lib.genAttrs supportedSystems (system: f system);
     in {
+      # dev shell just provides ghc 9.2
+      devShells = forAllSystems (system:
+        let pkgs = import nixpkgs { inherit system; };
+        in {
+          resume = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              haskell.compiler.ghc902
+              zlib.dev
+            ];
+          };
+        });
+
+      # the package definition pulls in haskell deps through nixpkgs
       packages = forAllSystems (system:
         let pkgs = import nixpkgs { inherit system; };
         in {
           resume = pkgs.stdenv.mkDerivation {
             name = "resume";
             version = "0.1.0";
-            src = ./src;
+            src = ./.;
 
             buildInputs = with pkgs.haskell; [
               (packages.ghc902.ghcWithPackages (haskellPackages:
@@ -31,7 +44,9 @@
 
             buildPhase = ''
               export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
-              runhaskell $src/Main.hs
+              # move config into src for runhaskell
+              cd src && cp -v ../style.css ../experience.dhall .
+              runhaskell $src/src/Main.hs
             '';
 
             installPhase = ''

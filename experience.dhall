@@ -43,7 +43,22 @@ let skills
 
 let history
     : List Job
-    =   [ { organization = "American Eagle Outfitters"
+    =   [ { organization = "Metafy"
+          , position = "Senior Software Engineer"
+          , duration = "June 2022 - September 2022"
+          , experiences =
+            [ "Backend Ruby development work using Hanami, Algolia, and GraphQL"
+            ]
+          }
+        , { organization = "Recurse Center"
+          , position = "Participant"
+          , duration = "March 2022 - June 2022"
+          , experiences =
+            [ "Reverse-engineered Super Smash Brothers Melee GameCube, creating a Rust program \"melee-inject\" to build new executable game images with replaced character textures"
+            , "Presented work in front of peers: \"Parsing and Transforming Super Smash Bros. Melee\". Presentation was featured as the first \"Dispatches at RC\" upload"
+            ]
+          }
+        , { organization = "American Eagle Outfitters"
           , position = "Systems Engineer"
           , duration = "December 2016 - January 2022"
           , experiences =
@@ -87,14 +102,6 @@ let history
             , "Profiled Trinity RNA-Seq assembler on high performance supercomputers using Perl"
             , "Presented research from profiling at two conferences, GLBIO 2013 + Duquesne Summer Undergraduate Research Symposium"
             , "Assisted with Python classes during summer bioinformatics workshop for minorities (PSC MARC Workshop 2013)"
-            ]
-          }
-        , { organization = "Google Code-In 2012"
-          , position = "Participant"
-          , duration = "Summer 2012"
-          , experiences =
-            [ "Wrote tests for bug reports for the perl6 interpreter"
-            , "Revamped perl6 FAQ page to match the rest of the site"
             ]
           }
         ]

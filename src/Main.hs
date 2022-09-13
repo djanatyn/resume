@@ -80,9 +80,8 @@ main = do
             BH.hr
             BH.h4 $ BH.toHtml $ email contact
             BH.h2 $ text "Skills"
-            BH.h3 $ text "Languages"
             BH.ul $ mapM_ (BH.li . BH.toHtml) $ languages skills
-            BH.h3 $ text "Software + SaaS"
+            BH.hr
             BH.ul $ mapM_ (BH.li . BH.toHtml) $ software skills
             BH.h1 $ text "Work Experience"
             mapM_ renderJob history
