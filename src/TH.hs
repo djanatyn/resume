@@ -24,6 +24,6 @@ versions =
           map
             unwords
             [ ["ghc", ghcVersion, "(rev ", ghcCommit, ")"],
-              ["nixos/nixpkgs", nixpkgsVersion]
+              ["nixos/nixpkgs rev", nixpkgsVersion]
             ]
           |]
