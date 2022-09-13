@@ -19,15 +19,11 @@ versions =
 
         ghcCommit <- run "ghc --print-project-git-commit-id"
         ghcVersion <- run "ghc --print-project-version"
-        dhall <- run "ghc-pkg list --simple-output dhall"
-        blaze <- run "ghc-pkg list --simple-output blaze-html"
 
         [|
           map
             unwords
-            [ ["ghc", ghcVersion, "(", ghcCommit, ")"],
-              ["nixos/nixpkgs", nixpkgsVersion],
-              [dhall],
-              [blaze]
+            [ ["ghc", ghcVersion, "(rev ", ghcCommit, ")"],
+              ["nixos/nixpkgs", nixpkgsVersion]
             ]
           |]
