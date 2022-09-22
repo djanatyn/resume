@@ -6,40 +6,17 @@ let Job
       , experiences : List Text
       }
 
-let Skills
-    : Type
-    = { languages : List Text, software : List Text }
-
 let ContactInfo
     : Type
     = { name : Text, email : Text }
 
 let Resume
     : Type
-    = { contact : ContactInfo, skills : Skills, history : List Job }
+    = { contact : ContactInfo, history : List Job }
 
 let contact
     : ContactInfo
     = { name = "Jonathan Strickland", email = "djanatyn@gmail.com" }
-
-let skills
-    : Skills
-    = { languages =
-        [ "10+ years using Haskell, Python, Bash/Shell"
-        , "7+ years of professional experience using Ansible, very comfortable with associated tooling (Ansible Tower, AWX)"
-        , "5+ years of professional experience using Terraform (since 2017, pre-0.12)"
-        , "Very familiar with Rust, Javascript, Racket, Java, C, Clojure, Common Lisp, Ruby"
-        , "~72 owned repositories at https://github.com/djanatyn; https://gist.github.com/djanatyn"
-        , "nixos/nixpkgs maintainer, ~12 packages (Rust, Python, C, C++): https://repology.org/maintainer/djanatyn@gmail.com"
-        , "Proven track record of picking up new languages quickly, documenting their tradeoffs, and establishing conventions + standards for usage on a team"
-        ]
-      , software =
-        [ "10+ years experience administering a variety of Linux distributions, including NixOS, RHEL, CentOS, CoreOS, Fedora, Debian, Arch Linux, Ubuntu"
-        , "8+ years administering AWS infrastructure. Successfully transitioned on-prem installations to AWS across multiple organizations"
-        , "6+ years administering Google Compute Engine infrastructure (including GKE)"
-        , "Deep personal and professional experience with git, systemd, docker, Apache, nginx, openssl/gnutls, MySQL/MariaDB, haproxy, yum"
-        ]
-      }
 
 let history
     : List Job
@@ -94,21 +71,11 @@ let history
             , "Educated rest of team on infrastructure through meetings, recorded videos, thorough documentation"
             ]
           }
-        , { organization = "Carnegie Mellon University"
-          , position = "Intern (Pittsburgh Supercomputing Center)"
-          , duration = "Summer 2013"
-          , experiences =
-            [ "Installed, configured, documented tools to run on the Galaxy bioinformatics web platform"
-            , "Profiled Trinity RNA-Seq assembler on high performance supercomputers using Perl"
-            , "Presented research from profiling at two conferences, GLBIO 2013 + Duquesne Summer Undergraduate Research Symposium"
-            , "Assisted with Python classes during summer bioinformatics workshop for minorities (PSC MARC Workshop 2013)"
-            ]
-          }
         ]
       : List Job
 
 let resume
     : Resume
-    = { contact, skills, history }
+    = { contact, history }
 
 in  resume

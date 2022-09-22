@@ -29,14 +29,6 @@ data Job where
     Job
   deriving (Show, Generic, FromDhall)
 
-data Skills where
-  Skills ::
-    { languages :: [Text],
-      software :: [Text]
-    } ->
-    Skills
-  deriving (Show, Generic, FromDhall)
-
 data ContactInfo where
   ContactInfo ::
     { name :: Text,
@@ -48,7 +40,6 @@ data ContactInfo where
 data Resume where
   Resume ::
     { contact :: ContactInfo,
-      skills :: Skills,
       history :: [Job]
     } ->
     Resume
@@ -69,7 +60,7 @@ versions = $(TH.versions)
 main :: IO ()
 main = do
   -- load resume
-  Resume {contact, skills, history} <- loadResume
+  Resume {contact, history} <- loadResume
 
   -- render html
   writeFile "resume.html" $
@@ -79,10 +70,6 @@ main = do
             BH.h1 $ BH.toHtml $ name contact
             BH.hr
             BH.h4 $ BH.toHtml $ email contact
-            BH.h2 $ text "Skills"
-            BH.ul $ mapM_ (BH.li . BH.toHtml) $ languages skills
-            BH.hr
-            BH.ul $ mapM_ (BH.li . BH.toHtml) $ software skills
             BH.h1 $ text "Work Experience"
             mapM_ renderJob history
             BH.hr
