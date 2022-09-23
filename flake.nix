@@ -34,6 +34,7 @@
               (packages.ghc902.ghcWithPackages (haskellPackages:
                 with haskellPackages; [
                   blaze-html
+                  blaze-markup
                   typed-process
                   bytestring
                   text

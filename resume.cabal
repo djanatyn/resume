@@ -14,6 +14,7 @@ executable resume
     build-depends:
         base ^>=4.15.1.0,
         blaze-html ^>=0.9.1,
+        blaze-markup ^>=0.8.2,
         bytestring ^>=0.10.12,
         text ^>=1.2.5,
         dhall ^>=1.41.2,

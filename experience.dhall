@@ -8,7 +8,7 @@ let Job
 
 let ContactInfo
     : Type
-    = { name : Text, email : Text }
+    = { name : Text, email : Text, github : Text }
 
 let Resume
     : Type
@@ -16,7 +16,10 @@ let Resume
 
 let contact
     : ContactInfo
-    = { name = "Jonathan Strickland", email = "djanatyn@gmail.com" }
+    = { name = "Jonathan Strickland"
+      , email = "djanatyn@gmail.com"
+      , github = "https://github.com/djanatyn"
+      }
 
 let history
     : List Job
@@ -25,6 +28,7 @@ let history
           , duration = "June 2022 - September 2022"
           , experiences =
             [ "Backend Ruby development work using Hanami, Algolia, and GraphQL"
+            , "Laid off, along with 20% of the company, shortly after starting"
             ]
           }
         , { organization = "Recurse Center"
