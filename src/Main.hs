@@ -16,8 +16,9 @@ import System.Process.Typed (readProcess_)
 import TH (Versions (..), versions)
 import qualified Text.Blaze as B
 import Text.Blaze.Html.Renderer.Pretty (renderHtml)
-import Text.Blaze.Html5 as BH
+import Text.Blaze.Html5 as BH hiding (main)
 import qualified Text.Blaze.Html5.Attributes as A
+
 
 data Job where
   Job ::

@@ -47,7 +47,7 @@
               export RESUME_NIXPKGS_REV="${nixpkgs.rev}"
 
               # move config into src for runhaskell
-              cp -v style.css experience.dhall src/
+              cp -rv icons style.css experience.dhall src/
 
               cd src && runhaskell Main.hs
             '';
