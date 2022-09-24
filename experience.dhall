@@ -10,9 +10,13 @@ let ContactInfo
     : Type
     = { name : Text, email : Text, github : Text }
 
+let Project
+    : Type
+    = { name : Text, url : Text, description : List Text }
+
 let Resume
     : Type
-    = { contact : ContactInfo, history : List Job }
+    = { contact : ContactInfo, history : List Job, projects : List Project }
 
 let contact
     : ContactInfo
@@ -78,8 +82,37 @@ let history
         ]
       : List Job
 
+let projects
+    : List Project
+    =   [ { name = "melee-inject"
+          , url = "https://github.com/djanatyn/melee-inject"
+          , description =
+            [ "Rust reverse-engineering project to replace character texture files in Super Smash Bros. Melee for the Nintendo GameCube"
+            , "Transforms GCM filesystem table, replacing existing file entries and adjusting subsequent offsets, adding necessary padding"
+            , "Uses `codegen` crate to generate structs (with doc comments) for every character's data files"
+            ]
+          }
+        , { name = "resume"
+          , url = "https://github.com/djanatyn/resume"
+          , description =
+            [ "Haskell project to generate this resume (demonstrating reproducible build principles)"
+            , "Uses dhall for structured input data, blaze-html for generating markup, nix for managing build instructions + dependencies"
+            , "pdf generated using wkhtmltopdf and custom stylesheet"
+            ]
+          }
+        , { name = "fetch-followers"
+          , url = "https://github.com/djanatyn/fetch-followers"
+          , description =
+            [ "Rust package to download account information from Twitter API, serializing to SQLite database"
+            , "Uses tokio framework + channels to fetch data and update database asynchronously"
+            , "Packaged using nix flakes, runs daily as a systemd oneshot unit on a timer"
+            ]
+          }
+        ]
+      : List Project
+
 let resume
     : Resume
-    = { contact, history }
+    = { contact, history, projects }
 
 in  resume

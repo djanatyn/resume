@@ -1,5 +1,6 @@
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -39,10 +40,20 @@ data ContactInfo where
     ContactInfo
   deriving (Show, Generic, FromDhall)
 
+data Project where
+  Project ::
+    { name :: Text,
+      url :: Text,
+      description :: [Text]
+    } ->
+    Project
+  deriving (Show, Generic, FromDhall)
+
 data Resume where
   Resume ::
     { contact :: ContactInfo,
-      history :: [Job]
+      history :: [Job],
+      projects :: [Project]
     } ->
     Resume
   deriving (Show, Generic, FromDhall)
