@@ -1,5 +1,6 @@
 {-# LANGUAGE DeriveAnyClass #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
@@ -8,16 +9,17 @@
 
 module Main where
 
-import Control.Monad (mapM_)
 import qualified Data.ByteString.Lazy.Char8 as BL
-import Data.Text (Text, unpack)
+import Data.Text as T (Text, concat, take, unpack)
+import qualified Data.Text.IO as TIO
 import Dhall (FromDhall, Generic, auto, inputFile)
-import System.IO (writeFile)
 import System.Process.Typed (readProcess_)
-import qualified TH
+import TH (Versions (..), versions)
+import qualified Text.Blaze as B
 import Text.Blaze.Html.Renderer.Pretty (renderHtml)
-import qualified Text.Blaze.Html5 as BH
+import Text.Blaze.Html5 as BH hiding (main)
 import qualified Text.Blaze.Html5.Attributes as A
+
 
 data Job where
   Job ::
@@ -32,49 +34,101 @@ data Job where
 data ContactInfo where
   ContactInfo ::
     { name :: Text,
-      email :: Text
+      email :: Text,
+      github :: Text
     } ->
     ContactInfo
+  deriving (Show, Generic, FromDhall)
+
+data Project where
+  Project ::
+    { name :: Text,
+      url :: Text,
+      description :: [Text]
+    } ->
+    Project
   deriving (Show, Generic, FromDhall)
 
 data Resume where
   Resume ::
     { contact :: ContactInfo,
-      history :: [Job]
+      history :: [Job],
+      projects :: [Project]
     } ->
     Resume
   deriving (Show, Generic, FromDhall)
+
+data Icons where
+  Icons ::
+    { haskell :: BH.Html,
+      nixos :: BH.Html,
+      rust :: BH.Html,
+      elm :: BH.Html
+    } ->
+    Icons
+
+loadIcon :: FilePath -> IO BH.Html
+loadIcon path = BH.preEscapedToHtml <$> TIO.readFile path
+
+loadIcons :: IO Icons
+loadIcons = do
+  haskell <- loadIcon "icons/haskell.svg"
+  nixos <- loadIcon "icons/nixos.svg"
+  rust <- loadIcon "icons/rust.svg"
+  elm <- loadIcon "icons/elm.svg"
+
+  pure $ Icons {haskell, nixos, rust, elm}
 
 loadResume :: IO Resume
 loadResume = inputFile (auto @Resume) "./experience.dhall"
 
 renderJob :: Job -> BH.Html
 renderJob Job {organization, position, duration, experiences} = do
-  BH.h2 $ BH.toHtml organization
-  BH.h4 $ BH.toHtml position <> BH.toHtml ("(" ++ unpack duration ++ ")")
-  BH.ul $ mapM_ (BH.li . BH.toHtml) experiences
+  BH.div ! A.class_ "box" $ do
+    BH.div ! A.class_ "organization" $ BH.p $ BH.toHtml organization
+    BH.div ! A.class_ "position" $ BH.p $ BH.toHtml position <> BH.toHtml ("(" ++ unpack duration ++ ")")
+  BH.ul $ mapM_ (BH.li . BH.preEscapedToHtml) experiences
 
-versions :: [String]
-versions = $(TH.versions)
+renderProject :: Project -> BH.Html
+renderProject Project {name, url, description} = do
+  BH.div ! A.class_ "box" $ do
+    BH.div ! A.class_ "organization" $ BH.p $ BH.toHtml name
+    BH.div ! A.class_ "position" $ BH.a ! A.href (B.textValue url) $ BH.p $ BH.toHtml url
+  BH.ul $ mapM_ (BH.li . BH.toHtml) description
 
 main :: IO ()
 main = do
   -- load resume
-  Resume {contact, history} <- loadResume
+  Resume {contact = ContactInfo {name, email, github}, history, projects} <- loadResume
+  Icons {haskell, nixos, rust, elm} <- loadIcons
 
   -- render html
   writeFile "resume.html" $
-    renderHtml $
-      let text = BH.toHtml @String
-       in do
-            BH.h1 $ BH.toHtml $ name contact
-            BH.hr
-            BH.h4 $ BH.toHtml $ email contact
-            BH.h1 $ text "Work Experience"
-            mapM_ renderJob history
-            BH.hr
-            BH.h3 $ text "(this resume built with...)"
-            BH.ul $ mapM_ (BH.li . BH.toHtml) versions
+    renderHtml $ do
+      BH.h1 $ BH.toHtml name
+      BH.hr
+      BH.div ! A.class_ "box" $ do
+        BH.div $ BH.a ! A.href (B.textValue github) $ BH.h4 $ BH.toHtml github
+        BH.div $ haskell >> nixos >> rust >> elm
+        BH.div $ BH.a ! A.href (B.textValue $ T.concat ["mailto:", email]) $ BH.h4 $ BH.toHtml email
+      BH.h3 $ BH.string "Work Experience"
+      mapM_ renderJob history
+      BH.hr
+      BH.h3 $ BH.string "Projects"
+      mapM_ renderProject projects
+      BH.hr
+      BH.h3 ! A.class_ "right" $ do
+        "(this resume "
+        BH.a ! A.href "https://github.com/djanatyn/resume/blob/master/flake.nix" $ "built with..."
+        ")"
+      let Versions {nixpkgsRev, ghcVersion, ghcRev} = $(versions)
+          nixpkgsUrl = T.concat ["https://github.com/NixOS/nixpkgs/tree/", nixpkgsRev]
+          ghcUrl = T.concat ["https://gitlab.haskell.org/ghc/ghc/-/tree/", ghcRev]
+          nixpkgsText = T.concat ["NixOS/nixpkgs (", T.take 8 nixpkgsRev, ")"]
+          ghcText = T.concat ["GHC ", ghcVersion, " (", T.take 8 ghcRev, ")"]
+       in BH.ul $ do
+            BH.li $ BH.a ! A.href (B.textValue nixpkgsUrl) $ B.text nixpkgsText
+            BH.li $ BH.a ! A.href (B.textValue ghcUrl) $ B.text ghcText
 
   -- convert html to pdf
   (stdout, stderr) <- readProcess_ "wkhtmltopdf --user-style-sheet style.css resume.html resume.pdf"

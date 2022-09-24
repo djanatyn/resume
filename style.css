@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  width: 800px;
+  width: 850px;
   margin: 0px auto 0px auto;
 }
 
@@ -15,12 +15,18 @@ li {
   margin: 0.1em;
 }
 
-h3,h4 {
-  text-align: right;
+.organization {
+  font-weight: bold;
 }
 
-h4 {
+.position {
   font-style: italic;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 h4 {

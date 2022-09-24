@@ -8,15 +8,22 @@ let Job
 
 let ContactInfo
     : Type
-    = { name : Text, email : Text }
+    = { name : Text, email : Text, github : Text }
+
+let Project
+    : Type
+    = { name : Text, url : Text, description : List Text }
 
 let Resume
     : Type
-    = { contact : ContactInfo, history : List Job }
+    = { contact : ContactInfo, history : List Job, projects : List Project }
 
 let contact
     : ContactInfo
-    = { name = "Jonathan Strickland", email = "djanatyn@gmail.com" }
+    = { name = "Jonathan Strickland"
+      , email = "djanatyn@gmail.com"
+      , github = "https://github.com/djanatyn"
+      }
 
 let history
     : List Job
@@ -25,6 +32,7 @@ let history
           , duration = "June 2022 - September 2022"
           , experiences =
             [ "Backend Ruby development work using Hanami, Algolia, and GraphQL"
+            , "Laid off, along with 20% of the company, shortly after starting"
             ]
           }
         , { organization = "Recurse Center"
@@ -32,7 +40,8 @@ let history
           , duration = "March 2022 - June 2022"
           , experiences =
             [ "Reverse-engineered Super Smash Brothers Melee GameCube, creating a Rust program \"melee-inject\" to build new executable game images with replaced character textures"
-            , "Presented work in front of peers: \"Parsing and Transforming Super Smash Bros. Melee\". Presentation was featured as the first \"Dispatches at RC\" upload"
+            , "Presented work in front of peers: <a href=\"https://docs.google.com/presentation/d/1sEnkbk3dOctiymV7YUATbzXb3zh2dj_D302XuHYNHi8/edit?usp=sharing\">\"Parsing and Transforming Super Smash Bros. Melee\"</a>"
+            , "Presentation was featured as the first <a href=\"https://www.youtube.com/watch?v=KejJrmT590g\">\"Dispatches at RC\"</a> upload"
             ]
           }
         , { organization = "American Eagle Outfitters"
@@ -74,8 +83,37 @@ let history
         ]
       : List Job
 
+let projects
+    : List Project
+    =   [ { name = "melee-inject"
+          , url = "https://github.com/djanatyn/melee-inject"
+          , description =
+            [ "Rust reverse-engineering project to replace character texture files in Super Smash Bros. Melee for the Nintendo GameCube"
+            , "Transforms GCM filesystem table, replacing existing file entries and adjusting subsequent offsets, adding necessary padding"
+            , "Uses `codegen` crate to generate structs (with doc comments) for every character's data files"
+            ]
+          }
+        , { name = "fetch-followers"
+          , url = "https://github.com/djanatyn/fetch-followers"
+          , description =
+            [ "Rust package to download account information from Twitter API, serializing to SQLite database"
+            , "Uses tokio framework + message passing over channels to fetch data and update database (asynchronously)"
+            , "Packaged using nix flakes, runs daily as a systemd oneshot unit on a timer"
+            ]
+          }
+        , { name = "resume"
+          , url = "https://github.com/djanatyn/resume"
+          , description =
+            [ "Haskell project to generate this resume! (demonstrating reproducible build principles)"
+            , "Uses dhall for structured input data, blaze-html for generating markup, nix for managing build instructions + dependencies"
+            , "pdf generated using wkhtmltopdf and custom stylesheet"
+            ]
+          }
+        ]
+      : List Project
+
 let resume
     : Resume
-    = { contact, history }
+    = { contact, history, projects }
 
 in  resume
