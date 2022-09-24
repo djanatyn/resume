@@ -39,7 +39,8 @@ let history
           , position = "Participant"
           , duration = "March 2022 - June 2022"
           , experiences =
-            [ "Reverse-engineered Super Smash Brothers Melee GameCube, creating a Rust program \"melee-inject\" to build new executable game images with replaced character textures"
+            [ "Attended a self-directed educational retreat for 12 weeks to improve my skills as a programmer"
+            , "Reverse-engineered Super Smash Brothers Melee GameCube, creating a Rust program \"melee-inject\" to build new executable game images with replaced character textures"
             , "Presented work in front of peers: <a href=\"https://docs.google.com/presentation/d/1sEnkbk3dOctiymV7YUATbzXb3zh2dj_D302XuHYNHi8/edit?usp=sharing\">\"Parsing and Transforming Super Smash Bros. Melee\"</a>"
             , "Presentation was featured as the first <a href=\"https://www.youtube.com/watch?v=KejJrmT590g\">\"Dispatches at RC\"</a> upload"
             ]
