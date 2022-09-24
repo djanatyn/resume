@@ -87,12 +87,19 @@ renderJob Job {organization, position, duration, experiences} = do
   BH.div ! A.class_ "box" $ do
     BH.div ! A.class_ "organization" $ BH.p $ BH.toHtml organization
     BH.div ! A.class_ "position" $ BH.p $ BH.toHtml position <> BH.toHtml ("(" ++ unpack duration ++ ")")
-  BH.ul $ mapM_ (BH.li . BH.toHtml) experiences
+  BH.ul $ mapM_ (BH.li . BH.preEscapedToHtml) experiences
+
+renderProject :: Project -> BH.Html
+renderProject Project {name, url, description} = do
+  BH.div ! A.class_ "box" $ do
+    BH.div ! A.class_ "organization" $ BH.p $ BH.toHtml name
+    BH.div ! A.class_ "position" $ BH.a ! A.href (B.textValue url) $ BH.p $ BH.toHtml url
+  BH.ul $ mapM_ (BH.li . BH.toHtml) description
 
 main :: IO ()
 main = do
   -- load resume
-  Resume {contact = ContactInfo {name, email, github}, history} <- loadResume
+  Resume {contact = ContactInfo {name, email, github}, history, projects} <- loadResume
   Icons {haskell, nixos, rust, elm} <- loadIcons
 
   -- render html
@@ -106,6 +113,9 @@ main = do
         BH.div $ BH.a ! A.href (B.textValue $ T.concat ["mailto:", email]) $ BH.h4 $ BH.toHtml email
       BH.h3 $ BH.string "Work Experience"
       mapM_ renderJob history
+      BH.hr
+      BH.h3 $ BH.string "Projects"
+      mapM_ renderProject projects
       BH.hr
       BH.h3 ! A.class_ "right" $ do
         "(this resume "
