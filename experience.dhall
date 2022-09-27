@@ -32,6 +32,8 @@ let history
           , duration = "June 2022 - September 2022"
           , experiences =
             [ "Backend Ruby development work using Hanami, Algolia, and GraphQL"
+            , "Documented onboarding process to new codebase, highlighting challenges encountered in a shared \"Things I Got Stuck on in the Codebase\" document"
+            , "Investigated and implemented enhancements to search indexes, enabling filtering coaches by additional criteria (character, position, popularity) in real-time"
             , "Laid off, along with 20% of the company, shortly after starting"
             ]
           }
