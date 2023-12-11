@@ -63,7 +63,7 @@ data Icons where
     { haskell :: BH.Html,
       nixos :: BH.Html,
       rust :: BH.Html,
-      elm :: BH.Html
+      typescript :: BH.Html
     } ->
     Icons
 
@@ -75,9 +75,9 @@ loadIcons = do
   haskell <- loadIcon "icons/haskell.svg"
   nixos <- loadIcon "icons/nixos.svg"
   rust <- loadIcon "icons/rust.svg"
-  elm <- loadIcon "icons/elm.svg"
+  typescript <- loadIcon "icons/typescript.svg"
 
-  pure $ Icons {haskell, nixos, rust, elm}
+  pure $ Icons {haskell, nixos, rust, typescript}
 
 loadResume :: IO Resume
 loadResume = inputFile (auto @Resume) "./experience.dhall"
@@ -100,7 +100,7 @@ main :: IO ()
 main = do
   -- load resume
   Resume {contact = ContactInfo {name, email, github}, history, projects} <- loadResume
-  Icons {haskell, nixos, rust, elm} <- loadIcons
+  Icons {haskell, nixos, rust, typescript} <- loadIcons
 
   -- render html
   writeFile "resume.html" $
@@ -109,7 +109,7 @@ main = do
       BH.hr
       BH.div ! A.class_ "box" $ do
         BH.div $ BH.a ! A.href (B.textValue github) $ BH.h4 $ BH.toHtml github
-        BH.div $ haskell >> nixos >> rust >> elm
+        BH.div $ haskell >> nixos >> rust >> typescript
         BH.div $ BH.a ! A.href (B.textValue $ T.concat ["mailto:", email]) $ BH.h4 $ BH.toHtml email
       BH.h3 $ BH.string "Work Experience"
       mapM_ renderJob history

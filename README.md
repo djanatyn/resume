@@ -47,5 +47,5 @@ nix build github:djanatyn/resume
 Icons used are from [Simple Icons](https://github.com/simple-icons/simple-icons) (CC0):
 * [Haskell Logo](https://github.com/simple-icons/simple-icons/blob/521c96fd04b0ea93034db8715eda5a4de27a58bb/icons/haskell.svg)
 * [NixOS Logo](https://github.com/simple-icons/simple-icons/blob/521c96fd04b0ea93034db8715eda5a4de27a58bb/icons/nixos.svg)
-* [Elm Logo](https://github.com/simple-icons/simple-icons/blob/521c96fd04b0ea93034db8715eda5a4de27a58bb/icons/elm.svg)
+* [TypeScript](https://github.com/simple-icons/simple-icons/blob/9b4e25c5c44385f7a74bcb74d527c43653153b78/icons/typescript.svg)
 * [Rust Logo](https://github.com/simple-icons/simple-icons/blob/521c96fd04b0ea93034db8715eda5a4de27a58bb/icons/rust.svg)
