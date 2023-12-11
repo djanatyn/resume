@@ -20,7 +20,7 @@ let Resume
 
 let contact
     : ContactInfo
-    = { name = "Jonathan Strickland (they/them)"
+    = { name = "Jonathan Strickland"
       , email = "djanatyn@gmail.com"
       , github = "https://github.com/djanatyn"
       }
@@ -31,8 +31,8 @@ let history
           , position = "Software Engineer"
           , duration = "November 2022 - November 2023"
           , experiences =
-            [ "Implemented Policy Testing for Oso Cloud, extending the syntax of the Polar programming language to support unit tests, with Oso Cloud executing and reporting results of authorization test cases"
-            , "Worked on a team to brainstorm, prototype, and ship the Oso Modeler, a tool for constructing executable authorization policies from descriptions of authorization requirements"
+            [ "Implemented <a href=\"https://www.osohq.com/docs/guides/develop/policy-tests\">Policy Testing for Oso Cloud</a>, extending the syntax of the Polar programming language to support unit tests, with Oso Cloud executing and reporting results of authorization test cases"
+            , "Worked on a team to brainstorm, prototype, and ship the <a href=\"https://ui.osohq.com/modeler\">Oso Modeler</a>, a tool for constructing executable authorization policies from descriptions of authorization requirements"
             , "Extended Polar lexer to intern comments, and prototyped a Polar automatic code-formatter preserving comments with their associated definitions"
             , "Provided regularly scheduled customer support in developing and troubleshooting Polar authorization policies, along with a traditional scheduled production on-call rotation maintaining the Oso Cloud service"
             ]
