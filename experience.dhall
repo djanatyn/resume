@@ -27,7 +27,16 @@ let contact
 
 let history
     : List Job
-    =   [ { organization = "Oso HQ"
+    =   [ { organization = "Mercury"
+          , position = "Senior Software Engineer (User Management)"
+          , duration = "May 2024 - December 2024"
+          , experiences =
+            [ "Worked on planning, risk evaluation, risk mitigation, sequencing, and implementation of \"customizable roles\", allowing end-users to define their own user roles with associated permissions and account access"
+            , "Helped to centralize authorization logic spread throughout the codebase into one backend policy, while adapting frontend component authorization logic to defer to the backend as a source of truth"
+            , "Regularly participated in 2-week interrupt rotation for user management team, responding to customer incidents related to authorization issues"
+            ]
+          }
+        , { organization = "Oso HQ"
           , position = "Software Engineer"
           , duration = "November 2022 - November 2023"
           , experiences =
