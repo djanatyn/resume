@@ -28,7 +28,7 @@ let contact
 let history
     : List Job
     =   [ { organization = "Mercury"
-          , position = "Senior Software Engineer (User Management)"
+          , position = "Senior Software Engineer, User Management"
           , duration = "May 2024 - December 2024"
           , experiences =
             [ "Worked on planning, risk evaluation, risk mitigation, sequencing, and implementation of \"customizable roles\", allowing end-users to define their own user roles with associated permissions and account access"
@@ -53,7 +53,6 @@ let history
             [ "Backend Ruby development work using Hanami, Algolia, and GraphQL"
             , "Documented onboarding process to new codebase, highlighting challenges encountered in a shared \"Things I Got Stuck on in the Codebase\" document"
             , "Investigated and implemented enhancements to search indexes, enabling filtering coaches by additional criteria (character, position, popularity) in real-time"
-            , "Laid off, along with 20% of the company, shortly after starting"
             ]
           }
         , { organization = "Recurse Center"
@@ -113,14 +112,6 @@ let projects
             [ "Rust reverse-engineering project to replace character texture files in Super Smash Bros. Melee for the Nintendo GameCube"
             , "Transforms GCM filesystem table, replacing existing file entries and adjusting subsequent offsets, adding necessary padding"
             , "Uses `codegen` crate to generate structs (with doc comments) for every character's data files"
-            ]
-          }
-        , { name = "fetch-followers"
-          , url = "https://github.com/djanatyn/fetch-followers"
-          , description =
-            [ "Rust package to download account information from Twitter API, serializing to SQLite database"
-            , "Uses tokio framework + message passing over channels to fetch data and update database (asynchronously)"
-            , "Packaged using nix flakes, runs daily as a systemd oneshot unit on a timer"
             ]
           }
         , { name = "resume"
