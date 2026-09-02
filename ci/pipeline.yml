@@ -1,0 +1,46 @@
+---
+resources:
+  - name: repo
+    type: git
+    source:
+      uri: https://github.com/djanatyn/resume.git
+      branch: main
+
+jobs:
+  - name: lint-test-build
+    plan:
+      - get: repo
+        trigger: true
+
+      - task: lint-test-build
+        config:
+          platform: linux
+
+          image_resource:
+            type: registry-image
+            source:
+              repository: rust
+              tag: "1.85-bookworm"
+
+          inputs:
+            - name: repo
+
+          caches:
+            - path: cargo-home/registry
+            - path: cargo-home/git
+            - path: repo/target
+
+          params:
+            CARGO_HOME: cargo-home
+
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                cd repo
+                rustup component add rustfmt clippy
+                cargo fmt --check
+                cargo clippy --locked --all-targets --all-features -- -D warnings
+                cargo test --locked
+                cargo build --locked
