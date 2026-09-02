@@ -3,7 +3,7 @@ resources:
   - name: repo
     type: git
     source:
-      uri: https://github.com/djanatyn/resume.git
+      uri: https://code.build.djan.org/djanatyn/resume.git
       branch: main
 
 jobs:
