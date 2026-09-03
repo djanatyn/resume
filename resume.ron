@@ -1,0 +1,10 @@
+Resume(
+    contact: ContactInfo(
+        name: "Jonathan Strickland",
+        email: "djanatyn@gmail.com",
+        github: "djanatyn",
+        website: "https://djan.org",
+    ),
+    history: [],
+    skills: [],
+)
