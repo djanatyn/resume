@@ -80,6 +80,7 @@ jobs:
                 cd repo
                 cargo run --locked
                 cp build/resume.* ../resume/
+                git rev-parse --short=12 HEAD > ../resume/commit-sha
       - task: publish-pdf
         config:
           platform: linux
@@ -96,6 +97,20 @@ jobs:
             args:
               - -exc
               - |
+                COMMIT_SHA="$(tr -d '\n' < resume/commit-sha)"
+
+                curl --fail \
+                  -X PUT \
+                  -H "Authorization: token ${FORGEJO_TOKEN}" \
+                  --upload-file resume/resume.pdf \
+                  "https://code.build.djan.org/api/packages/djanatyn/generic/resume/${COMMIT_SHA}/resume.pdf"
+
+                curl --fail \
+                  -X DELETE \
+                  -H "Authorization: token ${FORGEJO_TOKEN}" \
+                  "https://code.build.djan.org/api/packages/djanatyn/generic/resume/latest/resume.pdf" \
+                  || true
+
                 curl --fail \
                   -X PUT \
                   -H "Authorization: token ${FORGEJO_TOKEN}" \
