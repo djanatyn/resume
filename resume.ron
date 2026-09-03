@@ -2,7 +2,7 @@ Resume(
     contact: ContactInfo(
         name: "Jonathan Strickland",
         email: "djanatyn@gmail.com",
-        github: "djanatyn",
+        github: "https://github.com/djanatyn",
         website: "https://djan.org",
     ),
     skills: [
@@ -19,7 +19,7 @@ Resume(
             organization: "Filament",
             position: "Software Engineer",
             duration: "April 2025 - Now",
-            impact: ["Search", "Authorization", "Observability", "RAG", "MCP", "RabbitMQ", "Kafka", "ECS", "Matrix"],
+            impact: ["Search", "Authorization", "Observability", "MCP", "Matrix", "Infrastructure"],
             experiences: [
                 [Text("Developed a full-stack search system for Filament's member directory, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, and decommissioning the legacy search endpoint")],
                 [Text("Led implementation of Activity Center real-time notifications, authoring the RabbitMQ architecture RFC, building a Twisted async connection pool with reconnection and health monitoring, and delivering event-driven reaction tracking and read/unread state")],
@@ -45,7 +45,7 @@ Resume(
             duration: "November 2022 - November 2023",
             impact: ["Authorization", "Testing", "Customer Interviews", "Product Research", "Compilers"],
             experiences: [
-                [Text("Implemented "), Link(text: "Policy Testing for Oso Cloud", url: "https://www.osohq.com/docs/guides/develop/policy-tests"), Text(", extending the Polar language syntax to support executable authorization test cases with cloud exeuction and reporting")],
+                [Text("Implemented "), Link(text: "Policy Testing for Oso Cloud", url: "https://www.osohq.com/docs/guides/develop/policy-tests"), Text(", extending the Polar language syntax to support executable authorization test cases with cloud execution and reporting")],
                 [Text("Prototyped and shipped "), Link(text: "Oso Modeler", url: "https://ui.osohq.com/modeler"), Text(", a visual tool for constructing executable authorization policies from authorization requirements")],
                 [Text("Extended Polar lexer to preserve comments and prototyped an automatic formatter for policy code")],
             ],
@@ -72,7 +72,7 @@ Resume(
             organization: "American Eagle Outfitters",
             position: "Systems Engineer",
             duration: "December 2016 - January 2022",
-            impact: ["Kubernetes", "DevOps", "Ansible", "Bamboo", "Bitbucket", "Cloudfoundry", "GCP", "AWS"],
+            impact: ["Kubernetes", "DevOps", "Ansible", "Bamboo", "Bitbucket", "Cloud Foundry", "GCP", "AWS"],
             experiences: [
                 [Text("Developed and maintained continuous integration pipelines for applications and provisioned infrastructure, empowering teams to create pull requests to apply changes, using Python, Bash, Rust, Haskell")],
                 [Text("Used Terraform to provision cloud environments, developing modules for different components of American Eagle infrastructure on AWS, GCP, GKE")],
@@ -95,7 +95,7 @@ Resume(
             duration: "January 2014 - August 2015",
             impact: ["Ruby", "Puppet"],
             experiences: [
-                [Text("Used Puppet and Ruby to automate configuration, participated in regular on-call rotations, faciliated migration from OpenVZ physical hosts to AWS")],
+                [Text("Used Puppet and Ruby to automate configuration, participated in regular on-call rotations, facilitated migration from OpenVZ physical hosts to AWS")],
             ],
         ),
     ],

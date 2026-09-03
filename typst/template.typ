@@ -1,5 +1,4 @@
-#let render-inline(part) = {
-  if "Text" in part {
+#let render-inline(part) = {if "Text" in part {
     part.Text
   } else if "Code" in part {
     raw(part.Code)
@@ -62,7 +61,7 @@
     columns: (1fr, auto),
     align: (left, right),
     strong(job.organization),
-    emph(job.position + " (" + job.duration + ")"),
+    text(size: 8.8pt)[#emph(job.position + " (" + job.duration + ")") ],
   )
 
   impact-tags(job.impact)
@@ -77,9 +76,9 @@
   set page(paper: "us-letter", margin: (x: 0.7in, y: 0.6in))
   set text(font: ("Helvetica", "Liberation Sans", "DejaVu Sans"), size: 9.8pt)
   set par(leading: 0.48em, spacing: 0em)
-  set list(marker: [•], indent: 1.35em, body-indent: 0.55em, spacing: 0.16em)
+  set list(marker: [•], indent: 1.15em, body-indent: 0.45em, spacing: 0.16em)
 
-  text(size: 20pt, weight: "bold")[#resume.contact.name]
+  text(size: 18pt, weight: "bold")[#resume.contact.name]
   v(0.25em)
 
   line(length: 100%, stroke: 0.45pt)
@@ -88,7 +87,7 @@
   grid(
     columns: (1fr, auto, 1fr),
     align: (left, center, right),
-    link("https://github.com/" + resume.contact.github)[github.com/#resume.contact.github],
+    link(resume.contact.github)[#resume.contact.github],
     contact-icons,
     link("mailto:" + resume.contact.email)[#resume.contact.email],
   )

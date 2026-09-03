@@ -2,7 +2,7 @@
   "contact": {
     "name": "Jonathan Strickland",
     "email": "djanatyn@gmail.com",
-    "github": "djanatyn",
+    "github": "https://github.com/djanatyn",
     "website": "https://djan.org"
   },
   "skills": [
@@ -22,12 +22,9 @@
         "Search",
         "Authorization",
         "Observability",
-        "RAG",
         "MCP",
-        "RabbitMQ",
-        "Kafka",
-        "ECS",
-        "Matrix"
+        "Matrix",
+        "Infrastructure"
       ],
       "duration": "April 2025 - Now",
       "experiences": [
@@ -108,7 +105,7 @@
             }
           },
           {
-            "Text": ", extending the Polar language syntax to support executable authorization test cases with cloud exeuction and reporting"
+            "Text": ", extending the Polar language syntax to support executable authorization test cases with cloud execution and reporting"
           }
         ],
         [
@@ -178,7 +175,7 @@
         "Ansible",
         "Bamboo",
         "Bitbucket",
-        "Cloudfoundry",
+        "Cloud Foundry",
         "GCP",
         "AWS"
       ],
@@ -235,7 +232,7 @@
       "experiences": [
         [
           {
-            "Text": "Used Puppet and Ruby to automate configuration, participated in regular on-call rotations, faciliated migration from OpenVZ physical hosts to AWS"
+            "Text": "Used Puppet and Ruby to automate configuration, participated in regular on-call rotations, facilitated migration from OpenVZ physical hosts to AWS"
           }
         ]
       ]
