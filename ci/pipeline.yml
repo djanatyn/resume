@@ -60,14 +60,22 @@ jobs:
           caches:
             - path: cargo-home/registry
             - path: cargo-home/git
+            - path: cargo-home/bin
             - path: repo/target
           params:
             CARGO_HOME: cargo-home
+            TYPST_VERSION: 0.15.1
           run:
             path: sh
             args:
               - -exc
               - |
+                export PATH="${CARGO_HOME}/bin:${PATH}"
+
+                if ! command -v typst >/dev/null 2>&1; then
+                  cargo install --locked typst-cli --version "$TYPST_VERSION"
+                fi
+
                 cd repo
                 cargo run --locked
                 cp build/resume.* ../resume/
