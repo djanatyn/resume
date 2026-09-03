@@ -70,6 +70,7 @@ jobs:
             args:
               - -exc
               - |
+                export CARGO_HOME="${PWD}/cargo-home"
                 export PATH="${CARGO_HOME}/bin:${PATH}"
 
                 if ! command -v typst >/dev/null 2>&1; then
@@ -98,5 +99,5 @@ jobs:
                 curl --fail \
                   -X PUT \
                   -H "Authorization: token ${FORGEJO_TOKEN}" \
-                  --upload-file build/resume.pdf \
+                  --upload-file resume/resume.pdf \
                   "https://code.build.djan.org/api/packages/djanatyn/generic/resume/latest/resume.pdf"
