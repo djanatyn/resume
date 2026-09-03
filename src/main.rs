@@ -47,7 +47,13 @@ fn main() -> Result<()> {
     fs::write("build/resume.json", json).context("writing build/resume.json")?;
 
     let status = Command::new("typst")
-        .args(["compile", "typst/template.typ", "build/resume.pdf"])
+        .args([
+            "compile",
+            "typst/template.typ",
+            "build/resume.pdf",
+            "--root",
+            ".",
+        ])
         .status()
         .context("running typst")?;
 

@@ -5,17 +5,14 @@ resources:
     source:
       uri: https://code.build.djan.org/djanatyn/resume.git
       branch: main
-
 jobs:
   - name: lint-test-build
     plan:
       - get: repo
         trigger: true
-
       - task: lint-test-build
         config:
           platform: linux
-
           image_resource:
             type: registry-image
             source:
@@ -23,18 +20,14 @@ jobs:
               tag: 1.85.0-bookworm
               username: ((registry.username))
               password: ((registry.password))
-
           inputs:
             - name: repo
-
           caches:
             - path: cargo-home/registry
             - path: cargo-home/git
             - path: repo/target
-
           params:
             CARGO_HOME: cargo-home
-
           run:
             path: sh
             args:
@@ -45,3 +38,57 @@ jobs:
                 cargo clippy --locked --all-targets --all-features -- -D warnings
                 cargo test --locked
                 cargo build --locked
+  - name: generate-pdf
+    plan:
+      - get: repo
+        trigger: true
+        passed: [lint-test-build]
+      - task: generate-pdf
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: registry.build.djan.org/ci/rust
+              tag: 1.85.0-bookworm
+              username: ((registry.username))
+              password: ((registry.password))
+          inputs:
+            - name: repo
+          outputs:
+            - name: resume
+          caches:
+            - path: cargo-home/registry
+            - path: cargo-home/git
+            - path: repo/target
+          params:
+            CARGO_HOME: cargo-home
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                cd repo
+                cargo run --locked
+                cp build/resume.* ../resume/
+      - task: publish-pdf
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source:
+              repository: curlimages/curl
+          inputs:
+            - name: resume
+          params:
+            FORGEJO_TOKEN: ((forgejo.token))
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                curl --fail \
+                  -X PUT \
+                  -H "Authorization: token ${FORGEJO_TOKEN}" \
+                  --upload-file build/resume.pdf \
+                  "https://code.build.djan.org/api/packages/djanatyn/generic/resume/latest/resume.pdf"
