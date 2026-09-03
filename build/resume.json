@@ -161,7 +161,13 @@
       "experiences": [
         [
           {
-            "Text": "Attended 12-week self-directed programming retreat, building `melee-inject`: a Rust reverse-engineering project for modifying Super Smash Bros. Melee GameCube images"
+            "Text": "Attended 12-week self-directed programming retreat, building "
+          },
+          {
+            "Code": "melee-inject"
+          },
+          {
+            "Text": ": a Rust reverse-engineering project for modifying Super Smash Bros. Melee GameCube images"
           }
         ]
       ]

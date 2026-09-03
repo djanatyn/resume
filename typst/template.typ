@@ -26,14 +26,14 @@
 }
 
 #let contact-icons = align(center)[
-  #box(image("../icons/nixos.svg", height: 0.9em))
-  #box(image("../icons/terraform.svg", height: 0.9em))
-  #box(image("../icons/docker.svg", height: 0.9em))
-  #box(image("../icons/matrix.svg", height: 0.9em))
-  #box(image("../icons/rust.svg", height: 0.9em))
-  #box(image("../icons/python.svg", height: 0.9em))
-  #box(image("../icons/typescript.svg", height: 0.9em))
-  #box(image("../icons/haskell.svg", height: 0.9em))
+  #box(image("../icons/nixos.svg", height: 0.75em))
+  #box(image("../icons/terraform.svg", height: 0.75em))
+  #box(image("../icons/docker.svg", height: 0.75em))
+  #box(image("../icons/matrix.svg", height: 0.75em))
+  #box(image("../icons/rust.svg", height: 0.75em))
+  #box(image("../icons/python.svg", height: 0.75em))
+  #box(image("../icons/typescript.svg", height: 0.75em))
+  #box(image("../icons/haskell.svg", height: 0.75em))
 ]
 
 #let skill-strip(skills) = {
@@ -85,10 +85,9 @@
   v(0.55em)
 
   grid(
-    columns: (1fr, auto, 1fr),
-    align: (left, center, right),
+    columns: (1fr, 1fr),
+    align: (left, right),
     link(resume.contact.github)[#resume.contact.github],
-    contact-icons,
     link("mailto:" + resume.contact.email)[#resume.contact.email],
   )
 
@@ -106,6 +105,8 @@
 
   v(0.45em)
   line(length: 100%, stroke: 0.35pt)
+  v(0.2em)
+  align(right)[#contact-icons]
 
   body
 }
