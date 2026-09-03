@@ -30,17 +30,12 @@
       "experiences": [
         [
           {
-            "Text": "Developed a full-stack search system for Filament's member directory, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, and decommissioning the legacy search endpoint"
+            "Text": "Developed a member directory profile search system, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, and decommissioning the legacy search endpoint"
           }
         ],
         [
           {
             "Text": "Led implementation of Activity Center real-time notifications, authoring the RabbitMQ architecture RFC, building a Twisted async connection pool with reconnection and health monitoring, and delivering event-driven reaction tracking and read/unread state"
-          }
-        ],
-        [
-          {
-            "Text": "Built and expanded internal CLI tooling for local development, ECS deployments, secrets management, Terraform operations, Datadog monitoring, and production debugging, establishing it as a central interface for daily engineering workflows"
           }
         ],
         [
@@ -105,7 +100,7 @@
             }
           },
           {
-            "Text": ", extending the Polar language syntax to support executable authorization test cases with cloud execution and reporting"
+            "Text": ", extending the Polar language syntax to support executable authorization test cases"
           }
         ],
         [
@@ -199,12 +194,7 @@
         ],
         [
           {
-            "Text": "First responder for on-call rotation, addressing production AE.com issues, failures in build + deployment automation"
-          }
-        ],
-        [
-          {
-            "Text": "Used Terraform + Bamboo to create self-service \"ephemeral environments\" - when any UI developer opens a pull request, a new environment is launched, the new code is deployed, a DNS record is set up, the developer is sent a link to the live environment on their pull request to validate"
+            "Text": "Created self-service \"ephemeral environments\" - when any UI developer opens a pull request, a new environment is launched, the code is deployed, DNS is configured, the developer is sent a link on their pull request"
           }
         ]
       ]
@@ -232,7 +222,9 @@
       "position": "System Administrator",
       "impact": [
         "Ruby",
-        "Puppet"
+        "Puppet",
+        "AWS",
+        "OpenVZ"
       ],
       "duration": "January 2014 - August 2015",
       "experiences": [

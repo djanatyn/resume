@@ -25,26 +25,38 @@
   }
 }
 
-#let contact-icons = align(center)[
-  #box(image("../icons/nixos.svg", height: 0.75em))
-  #box(image("../icons/terraform.svg", height: 0.75em))
-  #box(image("../icons/docker.svg", height: 0.75em))
-  #box(image("../icons/matrix.svg", height: 0.75em))
-  #box(image("../icons/rust.svg", height: 0.75em))
-  #box(image("../icons/python.svg", height: 0.75em))
-  #box(image("../icons/typescript.svg", height: 0.75em))
-  #box(image("../icons/haskell.svg", height: 0.75em))
+#let interest-icons = [
+  #box(image("../icons/nixos.svg", height: 1em))
+  #box(image("../icons/terraform.svg", height: 1em))
+  #box(image("../icons/docker.svg", height: 1em))
+  #box(image("../icons/matrix.svg", height: 1em))
+  #box(image("../icons/rust.svg", height: 1em))
+  #box(image("../icons/python.svg", height: 1em))
+  #box(image("../icons/typescript.svg", height: 1em))
+  #box(image("../icons/haskell.svg", height: 1em))
+  #box(image("../icons/clojure.svg", height: 1em))
+  #box(image("../icons/linux.svg", height: 1em))
+  #box(image("../icons/gnuemacs.svg", height: 1em))
 ]
 
 #let skill-strip(skills) = {
   if skills.len() > 0 {
     v(0.45em)
     align(center)[
-      #text(size: 7.5pt, fill: rgb("#555555"))[#render-separated(skills)]
+      #text(size: 8pt, fill: rgb("#555555"))[#render-separated(skills)]
     ]
     v(0.55em)
   }
 }
+
+#let footer = grid(
+  columns: (1fr, auto),
+  align: (left, right),
+  text(size: 8pt, fill: rgb("#555555"))[
+    #link("https://www.linkedin.com/in/jonathan-strickland-507b2994/")[linkedin] · #link("https://djan.org")[djan.org] · #link("https://domino.garden/")[my cat]
+  ],
+  interest-icons,
+)
 
 #let impact-tags(impact) = {
   if impact.len() > 0 {
@@ -55,7 +67,7 @@
 }
 
 #let job-entry(job) = {
-  v(0.75em)
+  v(0.85em)
 
   grid(
     columns: (1fr, auto),
@@ -72,11 +84,12 @@
   )
 }
 
-#let resume-document(resume: (:), body) = {
+#let resume-document(resume: (:)) = {
   set page(paper: "us-letter", margin: (x: 0.7in, y: 0.6in))
-  set text(font: ("Helvetica", "Liberation Sans", "DejaVu Sans"), size: 9.8pt)
+  set text(font: ("New Computer Modern", "Helvetica", "Liberation Sans"), size: 9.8pt)
   set par(leading: 0.48em, spacing: 0em)
-  set list(marker: [•], indent: 1.15em, body-indent: 0.45em, spacing: 0.16em)
+  set list(marker: [•], indent: 1.1em, body-indent: 0.5em)
+  show link: it => underline(stroke: blue, it)
 
   text(size: 18pt, weight: "bold")[#resume.contact.name]
   v(0.25em)
@@ -106,9 +119,7 @@
   v(0.45em)
   line(length: 100%, stroke: 0.35pt)
   v(0.2em)
-  align(right)[#contact-icons]
-
-  body
+  footer
 }
 
-#resume-document(resume: json("../build/resume.json"), "")
+#resume-document(resume: json("../build/resume.json"))
