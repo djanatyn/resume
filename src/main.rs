@@ -25,6 +25,7 @@ struct ContactInfo {
 struct Job {
     organization: String,
     position: String,
+    impact: Vec<String>,
     duration: String,
     experiences: Vec<Vec<Inline>>,
 }
