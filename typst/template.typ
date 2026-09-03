@@ -1,10 +1,12 @@
 #let render-inline(part) = {
-  if part.type == "Text" {
-    part.value
-  } else if part.type == "Code" {
-    raw(part.value)
-  } else if part.type == "Link" {
-    link(part.value.url)[#part.value.text]
+  if "Text" in part {
+    part.Text
+  } else if "Code" in part {
+    raw(part.Code)
+  } else if "Link" in part {
+    link(part.Link.url)[#part.Link.text]
+  } else {
+    panic("unknown inline variant")
   }
 }
 

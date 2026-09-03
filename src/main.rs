@@ -30,7 +30,6 @@ struct Job {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-#[serde(tag = "type", content = "value")]
 enum Inline {
     Text(String),
     Code(String),

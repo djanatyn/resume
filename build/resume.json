@@ -6,5 +6,290 @@
     "website": "https://djan.org"
   },
   "skills": [],
-  "history": []
+  "history": [
+    {
+      "organization": "Filament",
+      "position": "Software Engineer",
+      "duration": "April 2025 - Now",
+      "experiences": [
+        [
+          {
+            "Text": "Created an end-to-end search system for the member directory of Filament's AI-powered chat platform, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, and semantic vector search, implementing zero-downtime reindexing, and decommissioning the legacy search endpoint after production cutover"
+          }
+        ],
+        [
+          {
+            "Text": "Led initial implementation of Activity Center real-time notification system, authoring RFC for RabbitMQ integration and implementing the connection pool, producer/consumer infrastructure, and endpoint integration, then onboarding team members to extend the system with additional features"
+          }
+        ],
+        [
+          {
+            "Text": "Significantly expanded internal CLI tooling, adding subcommand families for ECS deployments, secrets management, Terraform operations, Datadog monitoring, and production debugging, establishing it as a central interface for daily engineering workflows"
+          }
+        ],
+        [
+          {
+            "Text": "Developed MCP (Model Context Protocol) plugin for Matrix homeserver enabling AI agents to interact with the messaging platform, implementing OAuth 2.1 + PKCE authentication, Postgres-backed session state, and 13 tools for channel operations and messaging"
+          }
+        ],
+        [
+          {
+            "Text": "Established observability practices across the engineering team, integrating Datadog APM and OpenTelemetry tracing into Python and Rust services, creating a shared instrumentation library (filament-otel) to standardize tracing, and instrumenting push notification delivery paths to diagnose production issues"
+          }
+        ],
+        [
+          {
+            "Text": "Created cli-events-consumer (Rust), an event-driven pipeline (EventBridge, Lambda, Kafka) that captures CLI invocations and deployments, providing deployment visibility through Datadog dashboards, real-time Matrix notifications of environment activity, and automated Terraform plan comments on pull requests"
+          }
+        ],
+        [
+          {
+            "Text": "Migrated local Terraform workspace configurations to HCP Terraform and built CloudAMQP infrastructure for managed RabbitMQ deployment"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Mercury",
+      "position": "Senior Software Engineer, User Management",
+      "duration": "May 2024 - December 2024",
+      "experiences": [
+        [
+          {
+            "Text": "Worked on planning, risk evaluation, risk mitigation, sequencing, and implementation of \"customizable roles\", allowing end-users to define their own user roles with associated permissions and account access"
+          }
+        ],
+        [
+          {
+            "Text": "Helped to centralize authorization logic spread throughout the codebase into one backend policy, while adapting frontend component authorization logic to defer to the backend as a source of truth"
+          }
+        ],
+        [
+          {
+            "Text": "Regularly participated in 2-week interrupt rotation for user management team, responding to customer incidents related to authorization issues"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Oso HQ",
+      "position": "Software Engineer",
+      "duration": "November 2022 - November 2023",
+      "experiences": [
+        [
+          {
+            "Text": "Implemented "
+          },
+          {
+            "Link": {
+              "text": "Policy Testing for Oso Cloud",
+              "url": "https://www.osohq.com/docs/guides/develop/policy-tests"
+            }
+          },
+          {
+            "Text": ", extending the syntax of the Polar programming language to support unit tests, with Oso Cloud executing and reporting results of authorization test cases"
+          }
+        ],
+        [
+          {
+            "Text": "Worked on a team to brainstorm, prototype, and ship the "
+          },
+          {
+            "Link": {
+              "text": "Oso Modeler",
+              "url": "https://ui.osohq.com/modeler"
+            }
+          },
+          {
+            "Text": ", a tool for constructing executable authorization policies from descriptions of authorization requirements"
+          }
+        ],
+        [
+          {
+            "Text": "Extended Polar lexer to intern comments, and prototyped a Polar automatic code-formatter preserving comments with their associated definitions"
+          }
+        ],
+        [
+          {
+            "Text": "Provided regularly scheduled customer support in developing and troubleshooting Polar authorization policies, along with a traditional scheduled production on-call rotation maintaining the Oso Cloud service"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Metafy",
+      "position": "Senior Software Engineer",
+      "duration": "June 2022 - September 2022",
+      "experiences": [
+        [
+          {
+            "Text": "Backend Ruby development work using Hanami, Algolia, and GraphQL"
+          }
+        ],
+        [
+          {
+            "Text": "Documented onboarding process to new codebase, highlighting challenges encountered in a shared \"Things I Got Stuck on in the Codebase\" document"
+          }
+        ],
+        [
+          {
+            "Text": "Investigated and implemented enhancements to search indexes, enabling filtering coaches by additional criteria (character, position, popularity) in real-time"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Recurse Center",
+      "position": "Participant",
+      "duration": "March 2022 - June 2022",
+      "experiences": [
+        [
+          {
+            "Text": "Attended a self-directed educational retreat for 12 weeks to improve my skills as a programmer"
+          }
+        ],
+        [
+          {
+            "Text": "Reverse-engineered Super Smash Brothers Melee GameCube, creating a Rust program \"melee-inject\" to build new executable game images with replaced character textures"
+          }
+        ],
+        [
+          {
+            "Text": "Presented work in front of peers: "
+          },
+          {
+            "Link": {
+              "text": "\"Parsing and Transforming Super Smash Bros. Melee\"",
+              "url": "https://docs.google.com/presentation/d/1sEnkbk3dOctiymV7YUATbzXb3zh2dj_D302XuHYNHi8/edit?usp=sharing"
+            }
+          }
+        ],
+        [
+          {
+            "Text": "Presentation was featured as the first "
+          },
+          {
+            "Link": {
+              "text": "\"Dispatches at RC\"",
+              "url": "https://www.youtube.com/watch?v=KejJrmT590g"
+            }
+          },
+          {
+            "Text": " upload"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "American Eagle Outfitters",
+      "position": "Systems Engineer",
+      "duration": "December 2016 - January 2022",
+      "experiences": [
+        [
+          {
+            "Text": "Built relationships with technology teams across the organization, working to understand needs, improving efficiency of code lifecycle and promotion pipeline"
+          }
+        ],
+        [
+          {
+            "Text": "Installed, patched, maintained, and upgraded diverse infrastructure including Atlassian Bamboo, Bitbucket, Concourse CI, JIRA, JFrog Artifactory, Pivotal CloudFoundry, F5 BIG-IP LTM"
+          }
+        ],
+        [
+          {
+            "Text": "Developed and maintained continuous integration pipelines for applications and provisioned infrastructure, empowering teams to create pull requests to apply changes, using Python, Bash, Rust, Haskell"
+          }
+        ],
+        [
+          {
+            "Text": "Worked in multidisciplinary team for initial deployment of eCommerce API Gateway, solving performance and reliability problems along the way"
+          }
+        ],
+        [
+          {
+            "Text": "Used Terraform to provision cloud environments, developing modules for different components of American Eagle infrastructure on AWS, GCP, GKE"
+          }
+        ],
+        [
+          {
+            "Text": "First responder for on-call rotation, addressing production AE.com issues, failures in build + deployment automation"
+          }
+        ],
+        [
+          {
+            "Text": "Used Terraform + Bamboo to create self-service \"ephemeral environments\" - when any UI developer opens a pull request, a new environment is launched, the new code is deployed, a DNS record is set up, the developer is sent a link to the live environment on their pull request to validate"
+          }
+        ],
+        [
+          {
+            "Text": "Received many awards and nominations from peers and managers, including 2019 Eagles Elite \"in recognition of your determination to go above and beyond at AEO and exemplifying innovation and teamwork\""
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Industry Weapon",
+      "position": "Contractor",
+      "duration": "December 2015 - June 2016",
+      "experiences": [
+        [
+          {
+            "Text": "Evangelized greater use of version control, unit tests, documentation among my teams, resulting in a self-hosted gogs (go git service) instance (eventually was used by all development teams)"
+          }
+        ],
+        [
+          {
+            "Text": "Developed and shipped many custom software integrations for our digital signage platform using modern development practices to meet customer needs, regularly automating time-consuming parts of the development process"
+          }
+        ],
+        [
+          {
+            "Text": "Used Flask to develop secure, RESTful APIs with token-based authentication to serve as a backend for web applications"
+          }
+        ],
+        [
+          {
+            "Text": "Automated deployment process for Python applications using single executable with dependencies and application code self-contained inside"
+          }
+        ],
+        [
+          {
+            "Text": "Identified, documented, began discussions about RCE vulnerabilities in core parts of our codebase"
+          }
+        ],
+        [
+          {
+            "Text": "Worked with other developers to fix bugs in a decade old PHP web application using Bugzilla"
+          }
+        ]
+      ]
+    },
+    {
+      "organization": "Cytobank",
+      "position": "System Administrator",
+      "duration": "January 2014 - August 2015",
+      "experiences": [
+        [
+          {
+            "Text": "Used Puppet and Ruby scripting extensively to automate configuration of dev and prod servers"
+          }
+        ],
+        [
+          {
+            "Text": "Participated in regular on-call rotations, responded to production outages"
+          }
+        ],
+        [
+          {
+            "Text": "Worked on a team of 3 to facilitate migration of customers from physical OpenVZ hosting provider to AWS, organizing downtime, executing migration for most hosts"
+          }
+        ],
+        [
+          {
+            "Text": "Educated rest of team on infrastructure through meetings, recorded videos, thorough documentation"
+          }
+        ]
+      ]
+    }
+  ]
 }
