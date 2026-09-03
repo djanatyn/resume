@@ -21,7 +21,7 @@ Resume(
             duration: "April 2025 - Now",
             impact: ["Search", "Authorization", "Observability", "MCP", "Matrix", "Infrastructure"],
             experiences: [
-                [Text("Developed a member directory profile search system, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, and decommissioning the legacy search endpoint")],
+                [Text("Developed a member directory profile search system, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, decommissioning the legacy search endpoint")],
                 [Text("Led implementation of Activity Center real-time notifications, authoring the RabbitMQ architecture RFC, building a Twisted async connection pool with reconnection and health monitoring, and delivering event-driven reaction tracking and read/unread state")],
                 [Text("Developed MCP plugin for Matrix homeserver enabling AI agents to interact with the messaging platform, implementing OAuth 2.1 + PKCE, Postgres-backed session state, and an auditable authorization policy for tools (channel operations, messaging, reactions, profile management)")],
                 [Text("Established observability practices across Python and Rust services, integrating Datadog APM and OpenTelemetry, creating the shared "), Code("filament-otel"), Text(" Rust library, and instrumenting push notification delivery paths to diagnose production issues")],
