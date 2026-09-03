@@ -73,8 +73,6 @@ jobs:
                 export CARGO_HOME="${PWD}/cargo-home"
                 export PATH="${CARGO_HOME}/bin:${PATH}"
 
-                apt update && apt install --no-install-recommends -y fonts-liberation
-
                 if ! command -v typst >/dev/null 2>&1; then
                   cargo install --locked typst-cli --version "$TYPST_VERSION"
                 fi
