@@ -86,7 +86,7 @@
 
 #let resume-document(resume: (:)) = {
   set page(paper: "us-letter", margin: (x: 0.7in, y: 0.6in))
-  set text(font: ("New Computer Modern", "Helvetica", "Liberation Sans"), size: 9.8pt)
+  set text(font: ("New Computer Modern", "Liberation Sans"), size: 9.8pt)
   set par(leading: 0.48em, spacing: 0em)
   set list(marker: [•], indent: 1.1em, body-indent: 0.5em)
   show link: it => underline(stroke: blue, it)

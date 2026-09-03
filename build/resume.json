@@ -45,7 +45,13 @@
         ],
         [
           {
-            "Text": "Established observability practices across Python and Rust services, integrating Datadog APM and OpenTelemetry, creating the shared `filament-otel` Rust library, and instrumenting push notification delivery paths to diagnose production issues"
+            "Text": "Established observability practices across Python and Rust services, integrating Datadog APM and OpenTelemetry, creating the shared "
+          },
+          {
+            "Code": "filament-otel"
+          },
+          {
+            "Text": " Rust library, and instrumenting push notification delivery paths to diagnose production issues"
           }
         ],
         [
