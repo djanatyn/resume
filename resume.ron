@@ -4,6 +4,7 @@ Resume(
         email: "djanatyn@gmail.com",
         github: "https://github.com/djanatyn",
         website: "https://djan.org",
+        linkedin: "https://www.linkedin.com/in/jonathan-strickland-507b2994/",
     ),
     skills: [
         Skill("Rust"),
@@ -95,6 +96,20 @@ Resume(
             experiences: [
                 [Text("Used Puppet and Ruby to automate configuration, participated in regular on-call rotations, facilitated migration from OpenVZ physical hosts to AWS")],
             ],
+        ),
+    ],
+    footer_links: [
+        Link(
+            text: "linkedin",
+            url: "https://www.linkedin.com/in/jonathan-strickland-507b2994/",
+        ),
+        Link(
+            text: "djan.org",
+            url: "https://djan.org",
+        ),
+        Link(
+            text: "my cat",
+            url: "https://domino.garden",
         ),
     ],
 )

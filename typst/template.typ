@@ -49,12 +49,10 @@
   }
 }
 
-#let footer = grid(
+#let footer(links) = grid(
   columns: (1fr, auto),
   align: (left, right),
-  text(size: 8pt, fill: rgb("#555555"))[
-    #link("https://www.linkedin.com/in/jonathan-strickland-507b2994/")[linkedin] · #link("https://djan.org")[djan.org] · #link("https://domino.garden/")[my cat]
-  ],
+  text(size: 8pt, fill: rgb("#555555"))[#render-separated(links)],
   interest-icons,
 )
 
@@ -110,7 +108,7 @@
   text(size: 11pt, weight: "bold")[Work Experience]
   v(0.35em)
   line(length: 100%, stroke: 0.35pt)
-  v(0.25em)
+    v(0.25em)
 
   for job in resume.history {
     job-entry(job)
@@ -119,7 +117,7 @@
   v(0.45em)
   line(length: 100%, stroke: 0.35pt)
   v(0.2em)
-  footer
+    footer(resume.footer_links.map(l => link(l.url)[#l.text]))
 }
 
 #resume-document(resume: json("../build/resume.json"))

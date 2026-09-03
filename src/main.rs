@@ -8,6 +8,7 @@ struct Resume {
     contact: ContactInfo,
     skills: Vec<Skill>,
     history: Vec<Job>,
+    footer_links: Vec<Link>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -19,6 +20,7 @@ struct ContactInfo {
     email: String,
     github: String,
     website: String,
+    linkedin: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -35,6 +37,12 @@ enum Inline {
     Text(String),
     Code(String),
     Link { text: String, url: String },
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct Link {
+    text: String,
+    url: String,
 }
 
 fn main() -> Result<()> {

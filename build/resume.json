@@ -3,7 +3,8 @@
     "name": "Jonathan Strickland",
     "email": "djanatyn@gmail.com",
     "github": "https://github.com/djanatyn",
-    "website": "https://djan.org"
+    "website": "https://djan.org",
+    "linkedin": "https://www.linkedin.com/in/jonathan-strickland-507b2994/"
   },
   "skills": [
     "Rust",
@@ -30,7 +31,7 @@
       "experiences": [
         [
           {
-            "Text": "Developed a member directory profile search system, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, and decommissioning the legacy search endpoint"
+            "Text": "Developed a member directory profile search system, designing OpenSearch schemas through four iterations with autocomplete, fuzzy matching, semantic vector search, and zero-downtime reindexing, decommissioning the legacy search endpoint"
           }
         ],
         [
@@ -240,6 +241,20 @@
           }
         ]
       ]
+    }
+  ],
+  "footer_links": [
+    {
+      "text": "linkedin",
+      "url": "https://www.linkedin.com/in/jonathan-strickland-507b2994/"
+    },
+    {
+      "text": "djan.org",
+      "url": "https://djan.org"
+    },
+    {
+      "text": "my cat",
+      "url": "https://domino.garden"
     }
   ]
 }
