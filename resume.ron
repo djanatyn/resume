@@ -45,7 +45,7 @@ Resume(
             duration: "November 2022 - November 2023",
             impact: ["Authorization", "Testing", "Customer Interviews", "Product Research", "Compilers"],
             experiences: [
-                [Text("Implemented "), Link(text: "Policy Testing for Oso Cloud", url: "https://www.osohq.com/docs/guides/develop/policy-tests"), Text(", extending the Polar language syntax to support executable authorization test cases")],
+                [Text("Implemented "), Link(text: "Policy Testing for Oso Cloud", url: "https://www.osohq.com/docs/reference/polar/tests#polar-tests"), Text(", extending the Polar language syntax to support executable authorization test cases")],
                 [Text("Prototyped and shipped "), Link(text: "Oso Modeler", url: "https://ui.osohq.com/modeler"), Text(", a visual tool for constructing executable authorization policies from authorization requirements")],
                 [Text("Extended Polar lexer to preserve comments and prototyped an automatic formatter for policy code")],
             ],
