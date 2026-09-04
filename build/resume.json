@@ -74,7 +74,16 @@
       "experiences": [
         [
           {
-            "Text": "Planned and implemented customizable roles for user management, enabling customers to define roles with fine-grained permissions and account access while coordinating risk evaluation, rollout sequencing, and mitigation work"
+            "Text": "Planned and implemented "
+          },
+          {
+            "Link": {
+              "text": "customizable roles for user management",
+              "url": "https://support.mercury.com/hc/en-us/articles/43553342418836-Setting-up-custom-roles"
+            }
+          },
+          {
+            "Text": ", enabling customers to define roles with fine-grained permissions and account access while coordinating risk evaluation, rollout sequencing, and mitigation work"
           }
         ],
         [
@@ -166,7 +175,10 @@
             "Text": "Attended 12-week self-directed programming retreat, building "
           },
           {
-            "Code": "melee-inject"
+            "Link": {
+              "text": "melee-inject",
+              "url": "https://github.com/djanatyn/melee-inject"
+            }
           },
           {
             "Text": ": a Rust reverse-engineering project for modifying Super Smash Bros. Melee GameCube images"

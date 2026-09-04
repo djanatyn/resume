@@ -35,7 +35,7 @@ Resume(
             duration: "May 2024 - December 2024",
             impact: ["Authorization", "Postgres", "Refactoring"],
             experiences: [
-                [Text("Planned and implemented customizable roles for user management, enabling customers to define roles with fine-grained permissions and account access while coordinating risk evaluation, rollout sequencing, and mitigation work")],
+                [Text("Planned and implemented "), Link(text: "customizable roles for user management", url: "https://support.mercury.com/hc/en-us/articles/43553342418836-Setting-up-custom-roles"), Text(", enabling customers to define roles with fine-grained permissions and account access while coordinating risk evaluation, rollout sequencing, and mitigation work")],
                 [Text("Helped to centralize authorization logic spread throughout the codebase into one backend policy, while adapting frontend component authorization logic to defer to the backend as a source of truth")],
             ],
         ),
@@ -65,7 +65,7 @@ Resume(
             duration: "March 2022 - June 2022",
             impact: ["Rust", "Haskell", "PowerPC", "React", "CTFs", "Pair Programming"],
             experiences: [
-                [Text("Attended 12-week self-directed programming retreat, building "), Code("melee-inject"), Text(": a Rust reverse-engineering project for modifying Super Smash Bros. Melee GameCube images")],
+                [Text("Attended 12-week self-directed programming retreat, building "), Link(text: "melee-inject", url: "https://github.com/djanatyn/melee-inject"), Text(": a Rust reverse-engineering project for modifying Super Smash Bros. Melee GameCube images")],
             ],
         ),
         Job(
