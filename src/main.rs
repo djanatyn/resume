@@ -54,18 +54,35 @@ fn main() -> Result<()> {
     let json = serde_json::to_string_pretty(&resume).context("serializing resume JSON")?;
     fs::write("build/resume.json", json).context("writing build/resume.json")?;
 
-    let status = Command::new("typst")
-        .args([
-            "compile",
-            "typst/template.typ",
-            "build/resume.pdf",
-            "--root",
-            ".",
-        ])
-        .status()
-        .context("running typst")?;
+    {
+        let status = Command::new("typst")
+            .args([
+                "compile",
+                "typst/template.typ",
+                "build/resume.pdf",
+                "--root",
+                ".",
+            ])
+            .status()
+            .context("running typst")?;
 
-    anyhow::ensure!(status.success(), "typst compile failed");
+        anyhow::ensure!(status.success(), "typst compile failed");
+    }
+    {
+        let status = Command::new("magick")
+            .args([
+                "-density",
+                "200",
+                "build/resume.pdf",
+                "-border",
+                "10",
+                "build/resume.png",
+            ])
+            .status()
+            .context("running imagemagick")?;
+
+        anyhow::ensure!(status.success(), "imagemagick failed");
+    }
 
     Ok(())
 }
